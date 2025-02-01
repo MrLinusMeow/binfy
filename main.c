@@ -127,6 +127,6 @@ end:
    perror("close(binary_fd): ");
    _exit(-1);
   }
- _exit(0);
  }
+ _exit(0);
 }
