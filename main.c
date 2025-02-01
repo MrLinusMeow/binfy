@@ -10,7 +10,7 @@ main(int argc, char* argv[]){
   fprintf(stderr,"%s INPUT_FILE... OUTPUT_FILE\n", argv[0]);
   _exit(-1);
  }
- for(int iteration = 1; iteration <= argc; ++iteration){
+ for(int iteration = 1; iteration < argc-1; ++iteration){
   char buffer[1024];
   int hex_fd = open(argv[iteration], 102, 0664);
   if(!hex_fd) {
