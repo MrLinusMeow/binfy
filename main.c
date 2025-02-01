@@ -6,6 +6,10 @@
 
 void
 main(int argc, char* argv[]){
+ if(argc < 3){
+  fprintf(stderr,"%s INPUT_FILE... OUTPUT_FILE\n", argv[0]);
+  _exit(-1);
+ }
  for(int iteration = 1; iteration <= argc; ++iteration){
   char buffer[1024];
   int hex_fd = open(argv[iteration], 102, 0664);
@@ -113,7 +117,7 @@ second_repeat:
   goto first_repeat;
 end:
   i=0;
-  int binary_fd = open(argv[argc-1], 102, 0664);
+  int binary_fd = open( argv[argc-1], 102 | O_APPEND, 0664);
   if(!binary_fd) {
    perror("binary_fd open(): ");
    _exit(-1);
@@ -123,6 +127,6 @@ end:
    perror("close(binary_fd): ");
    _exit(-1);
   }
- }
  _exit(0);
+ }
 }
